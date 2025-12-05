@@ -33,7 +33,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     // Home page with navigation cards
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    
+
     // Dashboard redirect to home
     Route::get('/dashboard', function () {
         return redirect()->route('home');
@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Services routes
     Route::resource('servicios', ServicioController::class)->only(['index', 'create', 'store', 'show']);
-    
+
     // API route for sucursales dropdown
     Route::get('/api/sucursales', [SucursalController::class, 'list'])->name('api.sucursales');
 });

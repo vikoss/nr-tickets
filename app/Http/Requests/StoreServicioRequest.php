@@ -24,7 +24,7 @@ class StoreServicioRequest extends FormRequest
     public function rules(): array
     {
         $maxSizeKb = config('branding.evidence.max_size_kb', 5120);
-        
+
         return [
             'tipo_servicio' => [
                 'required',
@@ -70,7 +70,7 @@ class StoreServicioRequest extends FormRequest
             'evidencias.size' => 'Debe proporcionar exactamente 2 imágenes como evidencia.',
             'evidencias.*.image' => 'Cada evidencia debe ser una imagen.',
             'evidencias.*.mimes' => 'Las imágenes deben ser de tipo JPG o PNG.',
-            'evidencias.*.max' => 'Cada imagen no puede superar los ' . (config('branding.evidence.max_size_kb', 5120) / 1024) . ' MB.',
+            'evidencias.*.max' => 'Cada imagen no puede superar los '.(config('branding.evidence.max_size_kb', 5120) / 1024).' MB.',
         ];
     }
 

@@ -16,7 +16,9 @@ class Servicio extends Model
      * Service type constants for enum-like values.
      */
     public const TIPO_INSTALACION_GPS = 'instalacion_gps';
+
     public const TIPO_RETIRO_GPS = 'retiro_gps';
+
     public const TIPO_CAMBIO_EQUIPO = 'cambio_equipo';
 
     /**

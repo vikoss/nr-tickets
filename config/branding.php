@@ -2,12 +2,12 @@
 
 /**
  * Branding Configuration
- * 
+ *
  * This file configures the application branding including:
  * - Application and company names
  * - Logo paths for light and dark modes
  * - Color palette tokens (exposed via Tailwind config and CSS variables)
- * 
+ *
  * Color tokens are exposed to the frontend through:
  * 1. CSS custom properties in resources/css/app.css
  * 2. Tailwind theme extension in tailwind.config.js
@@ -50,7 +50,7 @@ return [
     | Primary and accent colors used throughout the application.
     | These values are exposed via CSS custom properties and can be
     | referenced in Tailwind classes using the 'brand' prefix.
-    | 
+    |
     | Color format: hex values (e.g., '#3B82F6')
     */
     'colors' => [
@@ -68,7 +68,7 @@ return [
             '900' => '#312E81',
             '950' => '#1E1B4B',
         ],
-        
+
         // Secondary color - used for secondary actions and accents
         'secondary' => [
             '50' => '#F0FDF4',
@@ -109,16 +109,16 @@ return [
     'evidence' => [
         // Maximum file size in kilobytes (default: 5MB)
         'max_size_kb' => (int) env('EVIDENCE_MAX_SIZE_KB', 5120),
-        
+
         // Allowed MIME types for evidence images
         'allowed_mimes' => ['image/jpeg', 'image/jpg', 'image/png'],
-        
+
         // Allowed extensions
         'allowed_extensions' => ['jpg', 'jpeg', 'png'],
-        
+
         // Image compression quality (0-100, higher = better quality)
         'compression_quality' => 85,
-        
+
         // Thumbnail dimensions (optional, for list views)
         'thumbnail' => [
             'width' => 300,

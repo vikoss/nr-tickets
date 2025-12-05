@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreServicioRequest;
 use App\Http\Resources\ServicioResource;
-use App\Models\Servicio;
 use App\Models\Evidencia;
+use App\Models\Servicio;
 use App\Services\EvidenceImageService;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -27,12 +27,12 @@ class ServicioController extends Controller
     public function index(Request $request): Response
     {
         $user = $request->user();
-        
+
         $query = Servicio::with(['user', 'sucursal', 'evidencias'])
             ->orderBy('fecha', 'desc');
 
         // Filter by user if not admin
-        if (!$user->isAdmin()) {
+        if (! $user->isAdmin()) {
             $query->where('user_id', $user->id);
         }
 
@@ -40,15 +40,15 @@ class ServicioController extends Controller
         if ($request->filled('fecha_desde')) {
             $query->whereDate('fecha', '>=', $request->input('fecha_desde'));
         }
-        
+
         if ($request->filled('fecha_hasta')) {
             $query->whereDate('fecha', '<=', $request->input('fecha_hasta'));
         }
-        
+
         if ($request->filled('sucursal_id')) {
             $query->where('sucursal_id', $request->input('sucursal_id'));
         }
-        
+
         if ($request->filled('tipo_servicio')) {
             $query->where('tipo_servicio', $request->input('tipo_servicio'));
         }
@@ -93,7 +93,7 @@ class ServicioController extends Controller
         $validated = $request->validated();
 
         // User must have a sucursal assigned
-        if (!$user->sucursal_id) {
+        if (! $user->sucursal_id) {
             return back()->withErrors([
                 'sucursal' => 'Debes tener una sucursal asignada para crear servicios.',
             ]);
@@ -114,7 +114,7 @@ class ServicioController extends Controller
             // Process and store evidences
             foreach ($validated['evidencias'] as $orden => $file) {
                 $imageData = $this->evidenceService->store($file, $servicio->id);
-                
+
                 Evidencia::create([
                     'id' => $imageData['evidenciaId'],
                     'servicio_id' => $servicio->id,
@@ -133,7 +133,7 @@ class ServicioController extends Controller
 
         } catch (\Exception $e) {
             DB::rollBack();
-            
+
             // Clean up any uploaded files if we created them
             if (isset($servicio)) {
                 $this->evidenceService->deleteServiceEvidences($servicio->id);

@@ -18,7 +18,7 @@ class SucursalController extends Controller
     public function index(Request $request): Response
     {
         // Only admin can manage sucursales
-        if (!$request->user()->isAdmin()) {
+        if (! $request->user()->isAdmin()) {
             abort(403);
         }
 
@@ -34,7 +34,7 @@ class SucursalController extends Controller
      */
     public function create(Request $request): Response
     {
-        if (!$request->user()->isAdmin()) {
+        if (! $request->user()->isAdmin()) {
             abort(403);
         }
 
