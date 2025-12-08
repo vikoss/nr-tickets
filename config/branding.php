@@ -40,7 +40,7 @@ return [
     'logos' => [
         'light' => '/images/logo-light.svg',
         'dark' => '/images/logo-dark.svg',
-        'favicon' => '/favicon.ico',
+        'favicon' => '/images/favicon.svg',
     ],
 
     /*

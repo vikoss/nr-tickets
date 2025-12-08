@@ -37,11 +37,11 @@ class DatabaseSeeder extends Seeder
 
         // Create admin user
         $admin = User::firstOrCreate(
-            ['email' => 'admin@example.com'],
+            ['email' => 'alex-admin@example.com'],
             [
-                'name' => 'Administrador',
-                'password' => Hash::make('password'),
-                'numero_empleado' => 'ADM001',
+                'name' => 'Alex Admin',
+                'password' => Hash::make('password4dm1n'),
+                'numero_empleado' => '00001',
                 'sucursal_id' => $sucursalCdmx->id,
             ]
         );
@@ -49,11 +49,11 @@ class DatabaseSeeder extends Seeder
 
         // Create tecnico user
         $tecnico = User::firstOrCreate(
-            ['email' => 'tecnico@example.com'],
+            ['email' => 'alex-tecnico@example.com'],
             [
-                'name' => 'Técnico Demo',
-                'password' => Hash::make('password'),
-                'numero_empleado' => 'TEC001',
+                'name' => 'Alex Tecnico',
+                'password' => Hash::make('passwordT3cn1c0'),
+                'numero_empleado' => '00002',
                 'sucursal_id' => $sucursalCdmx->id,
             ]
         );

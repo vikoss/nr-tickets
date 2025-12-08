@@ -117,25 +117,25 @@ const canSubmit = computed(() => {
                             <h3 class="mb-4 text-lg font-medium text-gray-900 dark:text-gray-100">Información del Técnico</h3>
                             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                 <div>
-                                    <InputLabel value="Nombre" />
+                                    <InputLabel value="Nombre" class="text-gray-900 dark:text-gray-100" />
                                     <div class="mt-1 rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700 dark:bg-gray-600 dark:text-gray-200">
                                         {{ userData.name }}
                                     </div>
                                 </div>
                                 <div>
-                                    <InputLabel value="Fecha y Hora" />
+                                    <InputLabel value="Fecha y Hora" class="text-gray-900 dark:text-gray-100" />
                                     <div class="mt-1 rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700 dark:bg-gray-600 dark:text-gray-200">
                                         {{ formatDate(fechaActual) }}
                                     </div>
                                 </div>
                                 <div>
-                                    <InputLabel value="Número de Empleado" />
+                                    <InputLabel value="Número de Empleado" class="text-gray-900 dark:text-gray-100" />
                                     <div class="mt-1 rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700 dark:bg-gray-600 dark:text-gray-200">
                                         {{ userData.numero_empleado || '-' }}
                                     </div>
                                 </div>
                                 <div>
-                                    <InputLabel value="Sucursal" />
+                                    <InputLabel value="Sucursal" class="text-gray-900 dark:text-gray-100" />
                                     <div class="mt-1 rounded-md px-3 py-2 text-sm" :class="userData.sucursal ? 'bg-gray-100 text-gray-700 dark:bg-gray-600 dark:text-gray-200' : 'bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200'">
                                         {{ userData.sucursal?.nombre || 'Sin sucursal asignada' }}
                                     </div>
