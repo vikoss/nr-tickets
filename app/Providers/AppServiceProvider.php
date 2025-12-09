@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Policies\ServicioPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Vite::prefetch(concurrency: 3);
+
+        // Force HTTPS scheme in production to avoid mixed-content with assets
+        if (app()->environment('production')) {
+            URL::forceScheme('https');
+        }
 
         // Register policies
         foreach ($this->policies as $model => $policy) {
