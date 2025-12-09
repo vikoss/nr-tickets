@@ -7,6 +7,9 @@ set -e
 # Renderizar la plantilla de nginx con el PORT definido
 envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 
+# Crear el enlace simbólico para el almacenamiento
+php artisan storage:link >/dev/null 2>&1 || true
+
 # Asegurar permisos
 chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache || true
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache || true
